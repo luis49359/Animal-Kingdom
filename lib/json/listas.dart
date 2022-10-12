@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-//EXT
 const List kingdoms = [
   "Felinos",
   "Acuáticos",

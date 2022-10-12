@@ -1,17 +1,16 @@
 import 'package:clonespotify/json/listas.dart';
-import 'package:clonespotify/paginas/album.dart';
+import 'package:clonespotify/paginas/animalpage.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
 class Home extends StatefulWidget {
-  Home({Key? key}) : super(key: key);
+  const Home({Key? key}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  @override
   int menuactivo = 0;
   int menuactivo2 = 0;
   List lista2 = kingdomsContent2[0]["animals"];
@@ -19,6 +18,7 @@ class _HomeState extends State<Home> {
   String mainImage = kingdomsContent1[0]["img"];
   Color backColor = kingdomsContent1[0]["color"];
   Color textColor = kingdomsContent1[0]["colorText"];
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backColor,
@@ -34,8 +34,9 @@ class _HomeState extends State<Home> {
       title: Padding(
         padding: const EdgeInsets.only(left: 10, right: 10),
         child:
+            // ignore: prefer_const_literals_to_create_immutables
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          Text(
+          const Text(
             "REINOS ANIMALES",
             style: TextStyle(
                 fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
@@ -76,10 +77,10 @@ class _HomeState extends State<Home> {
                               fontSize: 15,
                               color: menuactivo == index
                                   ? textColor
-                                  : Color.fromARGB(255, 68, 54, 40),
+                                  : const Color.fromARGB(255, 68, 54, 40),
                               fontWeight: FontWeight.w600),
                         ),
-                        SizedBox(height: 3),
+                        const SizedBox(height: 3),
                         menuactivo == index
                             ? Container(
                                 width: 10,
@@ -96,24 +97,22 @@ class _HomeState extends State<Home> {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
-        Container(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 30, right: 30),
-            child: Container(
-              width: double.infinity,
-              height: 250,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(mainImage), fit: BoxFit.cover),
-                  borderRadius: BorderRadius.circular(30)),
-            ),
+        Padding(
+          padding: const EdgeInsets.only(left: 30, right: 30),
+          child: Container(
+            width: double.infinity,
+            height: 250,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage(mainImage), fit: BoxFit.cover),
+                borderRadius: BorderRadius.circular(30)),
           ),
         ),
         // menu 2
-        SizedBox(
+        const SizedBox(
           height: 50,
         ),
         SingleChildScrollView(
@@ -131,7 +130,7 @@ class _HomeState extends State<Home> {
                           context,
                           PageTransition(
                               alignment: Alignment.bottomCenter,
-                              child: AlbumPage(
+                              child: AnimalPage(
                                 animal: lista[index],
                               ),
                               type: PageTransitionType.scale));
@@ -149,7 +148,7 @@ class _HomeState extends State<Home> {
                               color: backColor,
                               borderRadius: BorderRadius.circular(10)),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         Text(
@@ -159,10 +158,10 @@ class _HomeState extends State<Home> {
                               fontSize: 15,
                               fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 5,
                         ),
-                        Container(
+                        SizedBox(
                           width: 180,
                           child: Text(
                             lista[index]['header'],
@@ -185,7 +184,7 @@ class _HomeState extends State<Home> {
 //fin menu centro
         //tercer bloque
 
-        SizedBox(
+        const SizedBox(
           height: 50,
         ),
         SingleChildScrollView(
@@ -203,7 +202,7 @@ class _HomeState extends State<Home> {
                           context,
                           PageTransition(
                               alignment: Alignment.bottomCenter,
-                              child: AlbumPage(
+                              child: AnimalPage(
                                 animal: lista2[index],
                               ),
                               type: PageTransitionType.scale));
@@ -221,7 +220,7 @@ class _HomeState extends State<Home> {
                               color: backColor,
                               borderRadius: BorderRadius.circular(10)),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         Text(
@@ -231,10 +230,10 @@ class _HomeState extends State<Home> {
                               fontSize: 15,
                               fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 5,
                         ),
-                        Container(
+                        SizedBox(
                           width: 180,
                           child: Text(
                             lista2[index]['header'],

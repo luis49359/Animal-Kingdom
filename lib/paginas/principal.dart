@@ -11,9 +11,10 @@ class Principal extends StatefulWidget {
 class _PrincipalState extends State<Principal> {
   @override
   Widget build(BuildContext context) {
+    // ignore: prefer_const_constructors
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Home(),
+      body: const Home(),
     );
   }
 }

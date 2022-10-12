@@ -2,32 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_font_icons/flutter_font_icons.dart';
 
-class AlbumPage extends StatefulWidget {
-  const AlbumPage({Key? key, this.animal}) : super(key: key);
+class AnimalPage extends StatefulWidget {
+  const AnimalPage({Key? key, this.animal}) : super(key: key);
   final dynamic animal;
   @override
-  State<AlbumPage> createState() => _AlbumPageState();
+  State<AnimalPage> createState() => _AnimalPageState();
 }
 
-class _AlbumPageState extends State<AlbumPage> {
-  @override
+class _AnimalPageState extends State<AnimalPage> {
   double _currentSliderValue = 0;
 
-  // audio player here
   late AudioPlayer advancedPlayer;
   late AudioCache audioCache;
   bool isPlaying = true;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     initPlayer();
   }
 
   initPlayer() {
-    advancedPlayer = new AudioPlayer();
-    audioCache = new AudioCache(fixedPlayer: advancedPlayer);
+    advancedPlayer = AudioPlayer();
+    audioCache = AudioCache(fixedPlayer: advancedPlayer);
     playSound(widget.animal['sound']);
   }
 
@@ -55,6 +52,7 @@ class _AlbumPageState extends State<AlbumPage> {
     stopSound(widget.animal['sound']);
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: widget.animal['color'], //color de fondo
@@ -62,9 +60,6 @@ class _AlbumPageState extends State<AlbumPage> {
     );
   }
 
-//widget es cuando retorna un valor
-//metodo o accion no retorna valor
-//cuerpo del album
   Widget cuerpoAlbum() {
     var size = MediaQuery.of(context).size;
     return SingleChildScrollView(
@@ -72,26 +67,24 @@ class _AlbumPageState extends State<AlbumPage> {
         children: [
           Column(
             children: [
-              Container(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 30, right: 30, top: 100),
-                  child: Container(
-                    width: 400,
-                    height: 300,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage(widget.animal['img']),
-                            fit: BoxFit.cover),
-                        borderRadius: BorderRadius.circular(30)),
-                  ),
+              Padding(
+                padding: const EdgeInsets.only(left: 30, right: 30, top: 100),
+                child: Container(
+                  width: 400,
+                  height: 300,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage(widget.animal['img']),
+                          fit: BoxFit.cover),
+                      borderRadius: BorderRadius.circular(30)),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10),
-            child: Container(
+            child: SizedBox(
               width: size.width - 80,
               height: 70,
               child: Row(
@@ -109,7 +102,7 @@ class _AlbumPageState extends State<AlbumPage> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 400, right: 400),
-                        child: Container(
+                        child: SizedBox(
                           width: 400,
                           child: Text(
                             widget.animal["description"],
@@ -127,7 +120,7 @@ class _AlbumPageState extends State<AlbumPage> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Slider(
@@ -141,13 +134,13 @@ class _AlbumPageState extends State<AlbumPage> {
                 });
                 seekSound();
               }),
-          SizedBox(
+          const SizedBox(
             height: 25,
           ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
+                SizedBox(
                   width: size.width,
                   child: IconButton(
                       iconSize: 50,
@@ -180,7 +173,7 @@ class _AlbumPageState extends State<AlbumPage> {
                 ),
               ],
             ),
-          SizedBox(
+          const SizedBox(
             height: 25,
           ),
             ],
