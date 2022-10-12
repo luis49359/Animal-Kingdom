@@ -2,7 +2,7 @@ import 'package:clonespotify/paginas/Home.dart';
 import 'package:flutter/material.dart';
 
 class Principal extends StatefulWidget {
-  Principal({Key? key}) : super(key: key);
+  const Principal({Key? key}) : super(key: key);
 
   @override
   State<Principal> createState() => _PrincipalState();
